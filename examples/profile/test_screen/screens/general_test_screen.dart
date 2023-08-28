@@ -8,4 +8,9 @@ abstract class GeneralTestScreen {
             ((widget.decoration?.labelText == hint) ||
                 (widget.decoration?.hintText == hint));
       });
+  //кнопка далее
+  static Finder nextBtn =
+  find.byIcon(Icons.navigate_next);
+
+
 }

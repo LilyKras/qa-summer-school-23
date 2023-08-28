@@ -7,7 +7,9 @@ abstract class MainStepDefinitions {
         when<FlutterWidgetTesterWorld>(
           RegExp(r'Я перехожу к редактированию профиля$'),
           (context) async {
+
             final tester = context.world.rawAppDriver;
+            await tester.pumpAndSettle();
             await tester.tap(MainTestScreen.editProfileBtn);
           },
         ),

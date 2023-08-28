@@ -35,7 +35,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
           name: 'Успешное заполнение профиля',
           description: null,
           path:
-              '/Users/voronin/flutter-elementary-test/examples/profile/./integration_test/features/profile.feature',
+              '/Users/lilykrasnogorova/Desktop/qa-summer-school-23/examples/profile/./integration_test/features/profile.feature',
           tags: <String>[],
           steps: [
             (
@@ -139,7 +139,19 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               bool skip,
             ) async {
               return await runStep(
-                name: 'И Я выбираю "Sleep" из интересов',
+                name: 'И Я выбираю "Design" из интересов',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'И Я выбираю "Flowers" из интересов',
                 multiLineStrings: <String>[],
                 table: null,
                 dependencies: dependencies,
@@ -175,7 +187,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               bool skip,
             ) async {
               return await runStep(
-                name: 'И Я перехожу далее',
+                name: 'И Я сохраняю данные',
                 multiLineStrings: <String>[],
                 table: null,
                 dependencies: dependencies,
@@ -290,18 +302,30 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
                 skip: skip,
               );
             },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'И Я сохраняю данные',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
           ],
           onBefore: () async => onBeforeRunFeature(
             name: 'Профиль',
             path:
-                r'/Users/voronin/flutter-elementary-test/examples/profile/./integration_test/features/profile.feature',
+                '/Users/lilykrasnogorova/Desktop/qa-summer-school-23/examples/profile/./integration_test/features/profile.feature',
             description: null,
             tags: <String>[],
           ),
           onAfter: () async => onAfterRunFeature(
             name: 'Профиль',
             path:
-                r'/Users/voronin/flutter-elementary-test/examples/profile/./integration_test/features/profile.feature',
+                '/Users/lilykrasnogorova/Desktop/qa-summer-school-23/examples/profile/./integration_test/features/profile.feature',
             description: null,
             tags: <String>[],
           ),
