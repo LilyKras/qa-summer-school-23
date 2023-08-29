@@ -4,49 +4,51 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 import '../../test_screen/screens/interests_test_screen.dart';
+import '../world/contextualWorld.dart';
+import 'pupUntil_function.dart';
 
 abstract class InterestsStepDefinitions {
   static Iterable<StepDefinitionGeneric> get steps => [
 
-    when1<String, FlutterWidgetTesterWorld>(
+    when1<String, ContextualWorld>(
       RegExp(r'Я выбираю {string} из интересов$'),
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
-        await tester.pumpAndSettle();
+        await tester.pumpUntilVisible(InterestsTestScreen.interestsGestureDetector(interest));
         await tester.tap(InterestsTestScreen.interestsGestureDetector(interest));
-        await tester.pump();
       },
     ),
-    when1<String, FlutterWidgetTesterWorld>(
+    when1<String, ContextualWorld>(
       RegExp(r'Я выбираю {string} из интересов$'),
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
-        await tester.pumpAndSettle();
+        await tester.pumpUntilVisible(InterestsTestScreen.interestsGestureDetector(interest));
         await tester.tap(InterestsTestScreen.interestsGestureDetector(interest));
-        await tester.pump();
       },
     ),
-    when<FlutterWidgetTesterWorld>(
+    when<ContextualWorld>(
       RegExp(r'Я перехожу далее$'),
           (context) async {
         final tester = context.world.rawAppDriver;
+        await tester.pumpUntilVisible(InterestsTestScreen.nextBtn);
         await tester.tap(InterestsTestScreen.nextBtn);
       },
     ),
-    when<FlutterWidgetTesterWorld>(
+    when<ContextualWorld>(
       RegExp(r'Я вижу выбранные интересы$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpAndSettle();
+        await tester.pumpUntilVisible(InterestsTestScreen.scrollable);
         expect(true, true);
       },
     ),
-    when<FlutterWidgetTesterWorld>(
+    when<ContextualWorld>(
       RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
+        await tester.pumpUntilVisible(InterestsTestScreen.prevBtn);
         await tester.tap(InterestsTestScreen.prevBtn);
       },
     ),

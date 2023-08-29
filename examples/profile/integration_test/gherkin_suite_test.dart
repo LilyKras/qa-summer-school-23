@@ -8,13 +8,18 @@ import 'step_definitions/interests_step_definitions.dart';
 import 'step_definitions/main_step_definitions.dart';
 import 'step_definitions/place_step_definitions.dart';
 import 'step_definitions/profile_step_definitions.dart';
+import 'world/contextualWorld.dart';
 
 part 'gherkin_suite_test.g.dart';
+
 
 @GherkinTestSuite()
 void main() {
   executeTestSuite(
+
+
     configuration: FlutterTestConfiguration(
+      createWorld: (config)=>Future.value(ContextualWorld()),
       featureDefaultLanguage: 'ru',
       order: ExecutionOrder.alphabetical,
       defaultTimeout: const Duration(minutes: 5),
