@@ -1,3 +1,4 @@
+import 'package:elementary/elementary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
@@ -15,19 +16,12 @@ abstract class InterestsStepDefinitions {
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
+        context.world.setContext('interest', interest);
         await tester.implicitTap(InterestsTestScreen.interestsGestureDetector(interest));
       },
     ),
     when1<String, ContextualWorld>(
       RegExp(r'Я перевыбираю {string} из интересов$'),
-          (interest, context) async {
-        debugPrint(interest);
-        final tester = context.world.rawAppDriver;
-        await tester.implicitTap(InterestsTestScreen.interestsGestureDetector(interest));
-      },
-    ),
-    when1<String, ContextualWorld>(
-      RegExp(r'Я выбираю {string} из интересов$'),
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
@@ -46,7 +40,6 @@ abstract class InterestsStepDefinitions {
           (context) async {
         final tester = context.world.rawAppDriver;
         await tester.pumpUntilVisible(InterestsTestScreen.scrollable);
-        expect(true, true);
       },
     ),
     when<ContextualWorld>(
