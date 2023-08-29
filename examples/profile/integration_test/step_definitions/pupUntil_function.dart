@@ -44,4 +44,21 @@ extension PumpExtendedWidgetTester on WidgetTester{
     return false;
   }
 
+  Future<void> implicitTap(Finder finder, {Duration? timeout}) async {
+    final found = await pumpUntilVisible(finder, timeout: timeout ?? _defaultPumpTimeout);
+    if (!found) {
+      // ignore: only_throw_errors
+      throw TestFailure(finder.toString());
+    }
+    try {
+      await tap(finder);
+      await pump();
+    }
+    // ignore: avoid_catching_errors
+    on StateError catch (e) {
+      // ignore: only_throw_errors
+      throw TestFailure(e.message);
+    }
+  }
+
 }

@@ -11,8 +11,8 @@ abstract class MainStepDefinitions {
           (context) async {
 
             final tester = context.world.rawAppDriver;
-            await tester.pumpUntilVisible(MainTestScreen.editProfileBtn);
-            await tester.tap(MainTestScreen.editProfileBtn);
+            await tester.implicitTap(MainTestScreen.editProfileBtn);
+
           },
         ),
       ];

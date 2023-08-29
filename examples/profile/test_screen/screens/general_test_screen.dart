@@ -15,5 +15,8 @@ abstract class GeneralTestScreen {
   ///кнопка назад
   static Finder prevBtn = find.byWidgetPredicate((widget) => widget is BackButton);
 
+  ///кнопка отмены
+  static Finder cancelBtn = find.byIcon(Icons.cancel);
+
 
 }

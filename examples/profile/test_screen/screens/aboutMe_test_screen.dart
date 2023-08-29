@@ -13,4 +13,8 @@ abstract class AboutMeTestScreen {
   });
   /// кнопка назад
   static Finder prevBtn = GeneralTestScreen.prevBtn;
+
+  ///кнопка отмены
+  static Finder cancelBtn = GeneralTestScreen.cancelBtn;
+
 }

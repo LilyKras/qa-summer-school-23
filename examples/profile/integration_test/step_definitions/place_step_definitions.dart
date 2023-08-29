@@ -13,6 +13,18 @@ abstract class PlaceStepDefinitions {
       RegExp(r'Я выбираю город {string}$'),
           (place, context) async {
         final tester = context.world.rawAppDriver;
+        context.world.setContext('place',place);
+        await tester.pumpUntilVisible(PlaceTestScreen.placeField);
+        tester
+            .widget<TextField>(PlaceTestScreen.placeField)
+            .controller
+            ?.text = place;
+      },
+    ),
+    when1<String, ContextualWorld>(
+      RegExp(r'Я перевыбираю город {string}$'),
+          (place, context) async {
+        final tester = context.world.rawAppDriver;
         await tester.pumpUntilVisible(PlaceTestScreen.placeField);
         tester
             .widget<TextField>(PlaceTestScreen.placeField)
@@ -25,8 +37,8 @@ abstract class PlaceStepDefinitions {
       RegExp(r'Я перехожу далее$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(PlaceTestScreen.nextBtn);
-        await tester.tap(PlaceTestScreen.nextBtn);
+        await tester.implicitTap(PlaceTestScreen.nextBtn);
+
       },
     ),
     when<ContextualWorld>(
@@ -36,15 +48,14 @@ abstract class PlaceStepDefinitions {
         final tester = context.world.rawAppDriver;
         await tester.pumpUntilVisible(PlaceTestScreen.placeField);
         final fieldPlace = tester.widget<TextField>(PlaceTestScreen.placeField);
-        expect(fieldPlace.controller!.text, 'Voronezh');
+        expect(fieldPlace.controller!.text, context.world.getContext<String>('place'));
       },
     ),
     when<ContextualWorld>(
       RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(PlaceTestScreen.prevBtn);
-        await tester.tap(PlaceTestScreen.prevBtn);
+        await tester.implicitTap(PlaceTestScreen.prevBtn);
       },
     ),
 

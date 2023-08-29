@@ -14,6 +14,19 @@ abstract class AboutMeStepDefinitions {
       RegExp(r'Я заполняю заметку о себе {string}$'),
           (text, context) async {
         final tester = context.world.rawAppDriver;
+        context.world.setContext('text', text);
+        await tester.pumpUntilVisible(AboutMeTestScreen.textField);
+        tester
+            .widget<TextField>(AboutMeTestScreen.textField)
+            .controller
+            ?.text = text;
+
+      },
+    ),
+    when1<String, ContextualWorld>(
+      RegExp(r'Я перезаполняю заметку о себе {string}$'),
+          (text, context) async {
+        final tester = context.world.rawAppDriver;
         await tester.pumpUntilVisible(AboutMeTestScreen.textField);
         tester
             .widget<TextField>(AboutMeTestScreen.textField)
@@ -23,12 +36,13 @@ abstract class AboutMeStepDefinitions {
       },
     ),
 
+
     when<ContextualWorld>(
       RegExp(r'Я сохраняю данные$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(AboutMeTestScreen.saveBtn);
-        await tester.tap(AboutMeTestScreen.saveBtn);
+        await tester.implicitTap(AboutMeTestScreen.saveBtn);
+
       },
     ),
     when<ContextualWorld>(
@@ -38,7 +52,7 @@ abstract class AboutMeStepDefinitions {
         await tester.pumpUntilVisible(AboutMeTestScreen.textField);
 
         final fieldAboutMe = tester.widget<TextField>(AboutMeTestScreen.textField);
-        expect(fieldAboutMe.controller!.text, 'Тестовая заметка о себе');
+        expect(fieldAboutMe.controller!.text, context.world.getContext<String>('text'));
         await tester.pump();
       },
     ),
@@ -46,8 +60,14 @@ abstract class AboutMeStepDefinitions {
       RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(AboutMeTestScreen.prevBtn);
-        await tester.tap(AboutMeTestScreen.prevBtn);
+        await tester.implicitTap(AboutMeTestScreen.prevBtn);
+      },
+    ),
+    when<ContextualWorld>(
+      RegExp(r'Я отменяю редактирование$'),
+          (context) async {
+        final tester = context.world.rawAppDriver;
+        await tester.implicitTap(AboutMeTestScreen.cancelBtn);
       },
     ),
   ];

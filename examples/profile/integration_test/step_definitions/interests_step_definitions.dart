@@ -15,8 +15,15 @@ abstract class InterestsStepDefinitions {
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(InterestsTestScreen.interestsGestureDetector(interest));
-        await tester.tap(InterestsTestScreen.interestsGestureDetector(interest));
+        await tester.implicitTap(InterestsTestScreen.interestsGestureDetector(interest));
+      },
+    ),
+    when1<String, ContextualWorld>(
+      RegExp(r'Я перевыбираю {string} из интересов$'),
+          (interest, context) async {
+        debugPrint(interest);
+        final tester = context.world.rawAppDriver;
+        await tester.implicitTap(InterestsTestScreen.interestsGestureDetector(interest));
       },
     ),
     when1<String, ContextualWorld>(
@@ -24,16 +31,14 @@ abstract class InterestsStepDefinitions {
           (interest, context) async {
         debugPrint(interest);
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(InterestsTestScreen.interestsGestureDetector(interest));
-        await tester.tap(InterestsTestScreen.interestsGestureDetector(interest));
+        await tester.implicitTap(InterestsTestScreen.interestsGestureDetector(interest));
       },
     ),
     when<ContextualWorld>(
       RegExp(r'Я перехожу далее$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(InterestsTestScreen.nextBtn);
-        await tester.tap(InterestsTestScreen.nextBtn);
+        await tester.implicitTap(InterestsTestScreen.nextBtn);
       },
     ),
     when<ContextualWorld>(
@@ -48,8 +53,7 @@ abstract class InterestsStepDefinitions {
       RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.pumpUntilVisible(InterestsTestScreen.prevBtn);
-        await tester.tap(InterestsTestScreen.prevBtn);
+        await tester.implicitTap(InterestsTestScreen.prevBtn);
       },
     ),
   ];
