@@ -11,4 +11,6 @@ abstract class AboutMeTestScreen {
   static Finder saveBtn = find.byWidgetPredicate((widget) {
     return widget is ElevatedButton;
   });
+  /// кнопка назад
+  static Finder prevBtn = GeneralTestScreen.prevBtn;
 }

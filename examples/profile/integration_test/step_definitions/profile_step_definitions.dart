@@ -53,12 +53,6 @@ abstract class ProfileStepDefinitions {
         await tester.tap(ProfileTestScreen.nextBtn);
       },
     ),
-
-      ];
-}
-
-abstract class CheckProfileStepDefinitions {
-  static Iterable<StepDefinitionGeneric> get steps => [
     when<FlutterWidgetTesterWorld>(
       RegExp(r'Я вижу заполненные поля ФИО$'),
           (context) async {
@@ -84,14 +78,16 @@ abstract class CheckProfileStepDefinitions {
       },
     ),
     when<FlutterWidgetTesterWorld>(
-      RegExp(r'Я перехожу далее$'),
+      RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.tap(ProfileTestScreen.nextBtn);
+        await tester.tap(ProfileTestScreen.prevBtn);
       },
     ),
 
-  ];
+      ];
 }
+
+
 
 

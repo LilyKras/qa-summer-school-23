@@ -3,8 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:profile/runner.dart' as app;
 import 'package:surf_logger/surf_logger.dart';
-
-import '../test_screen/screens/interests_test_screen.dart';
 import 'step_definitions/aboutMe_step_definitions.dart';
 import 'step_definitions/interests_step_definitions.dart';
 import 'step_definitions/main_step_definitions.dart';
@@ -39,10 +37,6 @@ void main() {
         ...InterestsStepDefinitions.steps,
         ...AboutMeStepDefinitions.steps,
         ...MainStepDefinitions.steps,
-        ...CheckProfileStepDefinitions.steps,
-        ...CheckPlaceStepDefinitionsStepDefinitions.steps,
-        ...CheckInterestsStepDefinitions.steps,
-        ...CheckAboutMeStepDefinitions.steps,
       ],
     ),
     appMainFunction: (world) => app.run(),

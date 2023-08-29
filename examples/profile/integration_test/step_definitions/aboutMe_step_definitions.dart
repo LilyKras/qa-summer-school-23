@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 
 import '../../test_screen/screens/aboutMe_test_screen.dart';
-import '../../test_screen/screens/interests_test_screen.dart';
 
 abstract class AboutMeStepDefinitions {
   static Iterable<StepDefinitionGeneric> get steps => [
+
     when1<String, FlutterWidgetTesterWorld>(
       RegExp(r'Я заполняю заметку о себе {string}$'),
           (text, context) async {
@@ -28,12 +28,6 @@ abstract class AboutMeStepDefinitions {
         await tester.tap(AboutMeTestScreen.saveBtn);
       },
     ),
-
-  ];
-}
-
-abstract class CheckAboutMeStepDefinitions {
-  static Iterable<StepDefinitionGeneric> get steps => [
     when<FlutterWidgetTesterWorld>(
       RegExp(r'Я вижу заполненное поле заметки о себе$'),
           (context) async {
@@ -45,6 +39,13 @@ abstract class CheckAboutMeStepDefinitions {
         await tester.pump();
       },
     ),
-
+    when<FlutterWidgetTesterWorld>(
+      RegExp(r'Я перехожу назад$'),
+          (context) async {
+        final tester = context.world.rawAppDriver;
+        await tester.tap(AboutMeTestScreen.prevBtn);
+      },
+    ),
   ];
 }
+

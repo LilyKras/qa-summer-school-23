@@ -27,14 +27,6 @@ abstract class PlaceStepDefinitions {
         await tester.tap(PlaceTestScreen.nextBtn);
       },
     ),
-
-  ];
-}
-
-
-abstract class CheckPlaceStepDefinitionsStepDefinitions {
-  static Iterable<StepDefinitionGeneric> get steps => [
-
     when<FlutterWidgetTesterWorld>(
 
       RegExp(r'Я вижу заполненное поле города$'),
@@ -46,14 +38,15 @@ abstract class CheckPlaceStepDefinitionsStepDefinitions {
         await tester.pump();
       },
     ),
-
     when<FlutterWidgetTesterWorld>(
-      RegExp(r'Я перехожу далее$'),
+      RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.tap(PlaceTestScreen.nextBtn);
+        await tester.tap(PlaceTestScreen.prevBtn);
       },
     ),
 
   ];
 }
+
+

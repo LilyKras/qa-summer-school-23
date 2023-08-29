@@ -42,5 +42,8 @@ abstract class InterestsTestScreen {
   });
   /// кнопка next на экране интересов
   static Finder nextBtn = find.byWidgetPredicate((widget) => widget is ElevatedButton);
+
+  /// кнопка назад
+  static Finder prevBtn = GeneralTestScreen.prevBtn;
 }
 

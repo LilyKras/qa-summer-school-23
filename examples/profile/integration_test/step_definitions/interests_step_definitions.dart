@@ -4,8 +4,6 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 import '../../test_screen/screens/interests_test_screen.dart';
-import '../../test_screen/screens/place_test_screen.dart';
-import '../../test_screen/test_screen_library.dart';
 
 abstract class InterestsStepDefinitions {
   static Iterable<StepDefinitionGeneric> get steps => [
@@ -37,11 +35,6 @@ abstract class InterestsStepDefinitions {
         await tester.tap(InterestsTestScreen.nextBtn);
       },
     ),
-  ];
-}
-
-abstract class CheckInterestsStepDefinitions {
-  static Iterable<StepDefinitionGeneric> get steps => [
     when<FlutterWidgetTesterWorld>(
       RegExp(r'Я вижу выбранные интересы$'),
           (context) async {
@@ -51,13 +44,12 @@ abstract class CheckInterestsStepDefinitions {
       },
     ),
     when<FlutterWidgetTesterWorld>(
-      RegExp(r'Я перехожу далее$'),
+      RegExp(r'Я перехожу назад$'),
           (context) async {
         final tester = context.world.rawAppDriver;
-        await tester.tap(InterestsTestScreen.nextBtn);
+        await tester.tap(InterestsTestScreen.prevBtn);
       },
     ),
-
-
   ];
 }
+

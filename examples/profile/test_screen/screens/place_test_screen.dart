@@ -9,4 +9,6 @@ abstract class PlaceTestScreen {
 
   /// кнопка next на экране места
   static Finder nextBtn = GeneralTestScreen.nextBtn;
+  /// кнопка назад
+  static Finder prevBtn = GeneralTestScreen.prevBtn;
 }

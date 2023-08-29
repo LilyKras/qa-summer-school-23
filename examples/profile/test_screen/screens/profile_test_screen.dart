@@ -18,4 +18,7 @@ abstract class ProfileTestScreen {
 
   /// кнопка next на экране персональных данных
   static Finder nextBtn = GeneralTestScreen.nextBtn;
+
+  /// кнопка назад
+  static Finder prevBtn = GeneralTestScreen.prevBtn;
 }
